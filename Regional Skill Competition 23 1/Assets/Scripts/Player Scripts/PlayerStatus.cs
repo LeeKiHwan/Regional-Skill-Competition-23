@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class PlayerStatus : Unit
 {
+    [SerializeField] private float fuel;
     private void Update()
     {
         Move();
         Fire();
+        FuelDown();
     }
 
     protected override void Die()
     {
-
+        Destroy(gameObject);
     }
 
     protected override void Fire()
@@ -33,4 +35,17 @@ public class PlayerStatus : Unit
 
         transform.Translate(x, y, 0);
     }
+
+    private void FuelDown()
+    {
+        fuel -= Time.deltaTime * 0.5f;
+    }
+
+    public void HpUp(float AdditionalHp)
+    {
+        if (hp + AdditionalHp < 100) hp += AdditionalHp;
+        else if (hp + AdditionalHp >= 100) hp = 100;
+    }
+
+
 }

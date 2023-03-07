@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3927443134584488386}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,11 +50,12 @@ MonoBehaviour:
   hp: 100
   speed: 5
   bulletObj:
-  - {fileID: 365158532172372253, guid: 6b97b56845b3cc341ac95a89f3b68917, type: 3}
+  - {fileID: 1771615668507799826, guid: 6b97b56845b3cc341ac95a89f3b68917, type: 3}
   bulletLevel: 0
   bulletDamage: 10
   bulletSpeed: 10
   fireRate: 0.1
+  fuel: 100
 --- !u!58 &4715751275427595018
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -141,14 +142,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1795570314928571752}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1795570314607464521}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1795570314928571753
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -193,7 +194,7 @@ SpriteRenderer:
   m_Sprite: {fileID: 21300004, guid: 8aeb9e233fbb8f14db39770841b78b94, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 0.49, y: 0.46}
   m_AdaptiveModeThreshold: 0.5
