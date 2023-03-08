@@ -15,7 +15,7 @@ public abstract class Unit : MonoBehaviour
     [SerializeField] protected float bulletSpeed;
     [SerializeField] protected float fireRate;
     protected float fireTime;
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         if (hp > damage) hp -= damage;
         else Die();

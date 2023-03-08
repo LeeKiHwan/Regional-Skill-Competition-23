@@ -4,22 +4,25 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private enum BulletType
+    public enum BulletType
     {
         playerBullet,
         monsterBullet
     }
 
     [Header("BulletStatus")]
-    [SerializeField] private BulletType bulletType;
+    [SerializeField] public BulletType bulletType;
     [SerializeField] private float bulletDamage;
     [SerializeField] private float bulletSpeed;
-    [SerializeField] private float lifeTime;
+
+    private void Awake()
+    {
+        Destroy(gameObject, 10);
+    }
 
     private void Update()
     {
         Move();
-        LifeTime();
     }
 
     private void Move()
@@ -31,12 +34,6 @@ public class Bullet : MonoBehaviour
     {
         bulletDamage = damage;
         bulletSpeed = speed;
-    }
-
-    private void LifeTime()
-    {
-        if (lifeTime > 0) lifeTime -= Time.deltaTime;
-        else Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -54,7 +51,7 @@ public class Bullet : MonoBehaviour
         {
             if (collision.CompareTag("Player"))
             {
-                collision.gameObject.GetComponent<Unit>().TakeDamage(bulletDamage);
+                collision.gameObject.GetComponent<PlayerStatus>().TakeDamage(bulletDamage);
                 Destroy(gameObject);
             }
         }

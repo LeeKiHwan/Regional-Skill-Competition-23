@@ -100,16 +100,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
-  speed: 2
+  speed: 1
   bulletObj:
   - {fileID: 4599716477283660534, guid: 948ba9be73aa13e4984d12e316166b3b, type: 3}
   bulletLevel: 0
-  bulletDamage: 10
-  bulletSpeed: 3
+  bulletDamage: 15
+  bulletSpeed: 1.5
   fireRate: 3
   monsterType: 1
   player: {fileID: 0}
-  score: 0
+  score: 150
+  ItemObjs:
+  - {fileID: 8283605384927845717, guid: 7afb4978a52315c40baed94fa1801910, type: 3}
+  - {fileID: 8331449262375124438, guid: cf46b24728028864ebafaa33935ebb75, type: 3}
+  - {fileID: 1220859206106739749, guid: 200de18cc171ed7409a3d1af8d4564a6, type: 3}
+  - {fileID: 8287050122071846396, guid: 8a0b8f2a1b06f8d498d5f7801aee7da6, type: 3}
 --- !u!58 &8629150001613728902
 CircleCollider2D:
   m_ObjectHideFlags: 0

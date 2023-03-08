@@ -8,16 +8,21 @@ public class Monster : Unit
     {
         assault,
         tank,
-        speed
+        speed,
+        Meteor
     }
 
     [SerializeField] private MonsterType monsterType;
     [SerializeField] private Transform player;
     [SerializeField] private int score;
+    [SerializeField] private GameObject[] ItemObjs;
 
     private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        if (GameObject.FindGameObjectWithTag("Player"))
+        {
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        }
     }
 
     private void Update()
@@ -57,6 +62,7 @@ public class Monster : Unit
     protected override void Die()
     {
         GameManager.Instance.AddScore(score);
+        SpawnItem();
         Destroy(gameObject);
     }
 
@@ -103,5 +109,27 @@ public class Monster : Unit
 
         Instantiate(bulletObj[0]).GetComponent<Bullet>().SetBulletStatus(bulletDamage, bulletSpeed);
         fireTime = fireRate;
+    }
+    private void SpawnItem()
+    {
+        int rand = Random.Range(1, 100);
+
+        if (rand <= 30) Instantiate(ItemObjs[1], transform.position, Quaternion.identity);
+        else if (rand > 30 && rand <= 35) Instantiate(ItemObjs[0], transform.position, Quaternion.identity);
+        else if (rand > 35 && rand <= 45) Instantiate(ItemObjs[2], transform.position, Quaternion.identity);
+        else if (rand > 45 && rand <= 55) Instantiate(ItemObjs[3], transform.position, Quaternion.identity);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.name == "Monster Kill Zone")
+        {
+            Destroy(gameObject);
+        }
+
+        if (collision.CompareTag("Player"))
+        {
+            collision.GetComponent<PlayerStatus>().TakeDamage(bulletDamage);
+        }
     }
 }

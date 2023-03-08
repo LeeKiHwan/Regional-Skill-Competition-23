@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1795570314607464535}
   - component: {fileID: 4715751275427595018}
   - component: {fileID: 3927443134584488386}
+  - component: {fileID: 7772433439650936274}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -28,12 +29,12 @@ Transform:
   m_GameObject: {fileID: 1795570314607464520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1795570314928571766}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1795570314607464535
 MonoBehaviour:
@@ -51,11 +52,15 @@ MonoBehaviour:
   speed: 5
   bulletObj:
   - {fileID: 1771615668507799826, guid: 6b97b56845b3cc341ac95a89f3b68917, type: 3}
+  - {fileID: 7476157620861166407, guid: 150c56777b889864db062c975c66d0e4, type: 3}
+  - {fileID: 239511291588953950, guid: 31759a95f27683847af9885172ed5374, type: 3}
+  - {fileID: 2996201834120979817, guid: 614d0f8b2c93a0d47be89dd7af0b9327, type: 3}
   bulletLevel: 0
   bulletDamage: 10
   bulletSpeed: 10
   fireRate: 0.1
   fuel: 100
+  invincibilityTime: 0
 --- !u!58 &4715751275427595018
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -85,7 +90,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -118,6 +123,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &7772433439650936274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795570314607464520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31c02d48660874a4596463edffc27029, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  BombSkillObj: {fileID: 8598531986022122496, guid: 51ef9a56482f99a458a3c4ab6f103a8d, type: 3}
+  bombSkillTime: 3
+  bombSkillCoolTime: 10
+  bombSkillCurTime: 0
+  BombSkillCoolTimeImage: {fileID: 0}
+  BombSkillCount: {fileID: 0}
+  hpUpValue: 20
+  hpUpSkillTime: 3
+  hpUpSkillCoolTime: 10
+  hpUpSkillCurTime: 0
+  HpUpCoolTimeImage: {fileID: 0}
+  HpUpSkillCount: {fileID: 0}
 --- !u!1 &1795570314928571752
 GameObject:
   m_ObjectHideFlags: 0
