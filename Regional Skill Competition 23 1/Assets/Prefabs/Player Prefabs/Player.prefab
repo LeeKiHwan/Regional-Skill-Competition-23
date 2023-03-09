@@ -61,6 +61,10 @@ MonoBehaviour:
   fireRate: 0.1
   fuel: 100
   invincibilityTime: 0
+  PlayerHpSlider: {fileID: 0}
+  PlayerHpText: {fileID: 0}
+  PlayerFuelSlider: {fileID: 0}
+  PlayerFuelText: {fileID: 0}
 --- !u!58 &4715751275427595018
 CircleCollider2D:
   m_ObjectHideFlags: 0

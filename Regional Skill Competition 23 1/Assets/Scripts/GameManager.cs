@@ -10,6 +10,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int score;
     [SerializeField] public int currentStage;
     [SerializeField] private TextMeshProUGUI ScoreText;
+    [SerializeField] private TextMeshProUGUI StageText;
+    [SerializeField] private float stageTime;
+    [SerializeField] private float totalTime;
+    [SerializeField] private int getScore;
+    [SerializeField] private TextMeshProUGUI GetScoreText;
+    [SerializeField] private TextMeshProUGUI StageTimeText;
+    [SerializeField] private TextMeshProUGUI TotalTimeText;
 
     [Header("Monster")]
     public bool monsterSpawnable;
@@ -51,18 +58,29 @@ public class GameManager : MonoBehaviour
         SpawnMonster();
         SpawnMeteor();
         Score();
+        Timer();
     }
 
     public void AddScore(int AdditionalScore)
     {
         score += AdditionalScore;
+        getScore += AdditionalScore;
     }
 
     public void StartStage(int stage)
     {
-        DeleteMonster();
-        Invoke("SpawnBoss", 60);
         currentStage = stage;
+        if (stage == 1)
+        {
+            totalTime = 0;
+            score = 0;
+        }
+        stageTime = 0;
+        getScore = 0;
+        DeleteMonster();
+        monsterSpawnable = true;
+        meteorSpawnable = true;
+        Invoke("SpawnBoss", 60);
     }
 
     public void DeleteMonster()
@@ -127,6 +145,7 @@ public class GameManager : MonoBehaviour
 
     private void SpawnBoss()
     {
+        GameObject.Find("Boss Hp Slider").gameObject.SetActive(true);
         switch (currentStage)
         {
             case 1:
@@ -137,15 +156,62 @@ public class GameManager : MonoBehaviour
             case 3:
                 break;
         }
+        monsterSpawnable = false;
+        meteorSpawnable = false;
     }
 
     public void KilledBoss()
     {
+        switch (currentStage)
+        {
+            case 1:
+                StartCoroutine(ClearStage());
+                break;
+            case 2:
+                StartCoroutine(ClearStage());
+                break;
+            case 3:
+                break;
+        }
+    }
 
+    IEnumerator ClearStage()
+    {
+        StageText.text = "Cleared Stage : " + currentStage.ToString();
+        GetScoreText.text = "Get Score : " + getScore.ToString();
+        StageTimeText.text = "Stage Clear Time : " + ((int)stageTime / 60) + ":" + ((int)stageTime % 60);
+        StageText.gameObject.SetActive(true);
+        GetScoreText.gameObject.SetActive(true);
+        StageTimeText.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(5f);
+
+        StageText.gameObject.SetActive(false);
+        GetScoreText.gameObject.SetActive(false);
+        StageTimeText.gameObject.SetActive(false);
+
+        getScore = 0;
+        stageTime = 0;
+
+        if (currentStage == 1) StartStage(2);
+        else if (currentStage == 2) StartStage(3);
+
+        yield break;
     }
 
     private void Score()
     {
         ScoreText.text = "Score : " + score.ToString();
+    }
+
+    private void Timer()
+    {
+        if (currentStage != 0)
+        {
+            totalTime += Time.deltaTime;
+            stageTime += Time.deltaTime;
+        }
+
+        TotalTimeText.text = "Total Time : " + ((int)totalTime / 60) + ":" + ((int)totalTime % 60);
     }
 }

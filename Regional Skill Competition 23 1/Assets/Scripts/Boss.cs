@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Boss : Unit
 {
@@ -11,9 +12,12 @@ public class Boss : Unit
         ThirdBoss
     }
 
+    [SerializeField] private float maxHp;
     [SerializeField] private BossType bossType;
     [SerializeField] private Transform player;
     [SerializeField] private int score;
+    [SerializeField] private Slider HpSlider;
+    [SerializeField] private bool isBirstFiring;
 
     private void Awake()
     {
@@ -21,16 +25,20 @@ public class Boss : Unit
         {
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         }
+
+        HpSlider = GameObject.Find("Boss Hp Slider").GetComponent<Slider>();
     }
 
     private void Update()
     {
         Fire();
         Move();
+        Hp();
     }
 
     protected override void Die()
     {
+        HpSlider.gameObject.SetActive(false);
         GameManager.Instance.AddScore(score);
         GameManager.Instance.KilledBoss();
         Destroy(gameObject);
@@ -62,10 +70,10 @@ public class Boss : Unit
 
         if (rand == 0)
         {
-            Vector3 pos = new Vector3(transform.position.x - 3, transform.position.y, 0);
-            CircleFire(10, pos);
-            pos = new Vector3(transform.position.x + 3, transform.position.y, 0);
-            CircleFire(10, pos);
+            Vector3 pos = new Vector3(transform.position.x - 2, transform.position.y, 0);
+            CircleFire(15, pos);
+            pos = new Vector3(transform.position.x + 2, transform.position.y, 0);
+            CircleFire(15, pos);
         }
         else if (rand == 1) StartCoroutine(BirstFire(5, 5));
         else if (rand == 2) SniperFire();
@@ -85,8 +93,8 @@ public class Boss : Unit
     {
         for (int i = 0; i < count; i++)
         {
-            float randX = Random.Range(-8.0f, 8.0f);
-            float randY = Random.Range(-8.0f, 8.0f);
+            float randX = Random.Range(-6.0f, 6.0f);
+            float randY = Random.Range(-6.0f, 6.0f);
             Vector2 randPlayerPos = new Vector2(player.position.x + randX, player.position.y + randY);
 
             Vector2 dir = randPlayerPos - (Vector2)transform.position;
@@ -104,6 +112,13 @@ public class Boss : Unit
     IEnumerator BirstFire(int count, int birstCount)
     {
         fireTime = fireRate;
+
+        if (isBirstFiring)
+        {
+            fireTime = 0;
+            yield break;
+        }
+        else if (!isBirstFiring) isBirstFiring = true;
         
         for (int i =0; i < birstCount; i++)
         {
@@ -120,7 +135,7 @@ public class Boss : Unit
             }
             yield return new WaitForSeconds(0.75f);
         }
-
+        isBirstFiring=false;
         yield break;
     }
 
@@ -142,6 +157,14 @@ public class Boss : Unit
             case BossType.FirstBoss:
                 if (transform.position.y > 3.5f) transform.Translate(0, -1.5f * Time.deltaTime, 0);
                 break;
+            case BossType.SecondBoss:
+                if (transform.position.y > 3.8f) transform.Translate(0, -1.5f * Time.deltaTime, 0);
+                break;
         }
+    }
+
+    private void Hp()
+    {
+        HpSlider.value = hp / maxHp;
     }
 }
