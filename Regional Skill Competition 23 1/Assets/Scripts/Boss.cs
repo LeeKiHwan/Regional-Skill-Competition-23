@@ -18,6 +18,7 @@ public class Boss : Unit
     [SerializeField] private int score;
     [SerializeField] private Slider HpSlider;
     [SerializeField] private bool isBirstFiring;
+    [SerializeField] private bool isMeteorShowering;
 
     private void Awake()
     {
@@ -71,25 +72,55 @@ public class Boss : Unit
         if (rand == 0)
         {
             Vector3 pos = new Vector3(transform.position.x - 2, transform.position.y, 0);
-            CircleFire(15, pos);
+            CircleFire(15, pos, 2);
             pos = new Vector3(transform.position.x + 2, transform.position.y, 0);
-            CircleFire(15, pos);
+            CircleFire(15, pos, 2);
         }
-        else if (rand == 1) StartCoroutine(BirstFire(5, 5));
-        else if (rand == 2) SniperFire();
+        else if (rand == 1) StartCoroutine(BirstFire(5, 5, 6.5f));
+        else if (rand == 2) SniperFire(10);
     }
 
     private void SecondBossFire()
     {
+        int rand = Random.Range(0, 4);
 
+        if (rand == 0)
+        {
+            Vector3 pos = new Vector3(transform.position.x, transform.position.y, 0);
+            CircleFire(10, pos, 2);
+            pos = new Vector3(transform.position.x - 2, transform.position.y, 0);
+            CircleFire(10, pos, 2);
+            pos = new Vector3(transform.position.x + 2, transform.position.y, 0);
+            CircleFire(10, pos, 2);
+        }
+        else if (rand == 1) StartCoroutine(BirstFire(10, 3, 8f));
+        else if (rand == 2) SniperFire(10);
+        else if (rand == 3) StartCoroutine(MeteorShower(10));
     }
 
     private void ThirdBossFire()
     {
+        int rand = Random.Range(0, 4);
 
+        if (rand == 0) StartCoroutine(CircleAttackCoroutine(10));
+        else if (rand == 1) StartCoroutine(BirstFire(5, 1, 12f));
+        else if (rand == 2) SniperFire(15);
+        else if (rand == 3) StartCoroutine(MeteorShower(15));
     }
 
-    private void CircleFire(int count, Vector3 pos)
+    IEnumerator CircleAttackCoroutine(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            Vector3 pos = new Vector3(transform.position.x, transform.position.y, 0);
+            CircleFire(5, pos, 10);
+
+            yield return new WaitForSeconds(0.5f);
+        }
+        yield break;
+    }
+
+    private void CircleFire(int count, Vector3 pos, float speed)
     {
         for (int i = 0; i < count; i++)
         {
@@ -101,7 +132,7 @@ public class Boss : Unit
 
             bulletObj[0].transform.up = dir.normalized;
             bulletObj[0].transform.position = pos;
-            bulletSpeed = 2f;
+            bulletSpeed = speed;
 
             Instantiate(bulletObj[0]).GetComponent<Bullet>().SetBulletStatus(bulletDamage, bulletSpeed);
         }
@@ -109,7 +140,7 @@ public class Boss : Unit
         fireTime = fireRate;
     }
 
-    IEnumerator BirstFire(int count, int birstCount)
+    IEnumerator BirstFire(int count, int birstCount, float speed)
     {
         fireTime = fireRate;
 
@@ -128,7 +159,7 @@ public class Boss : Unit
 
                 bulletObj[0].transform.up = dir.normalized;
                 bulletObj[0].transform.position = transform.position;
-                bulletSpeed = 6.5f;
+                bulletSpeed = speed;
 
                 Instantiate(bulletObj[0]).GetComponent<Bullet>().SetBulletStatus(bulletDamage, bulletSpeed);
                 yield return new WaitForSeconds(0.1f);
@@ -139,15 +170,43 @@ public class Boss : Unit
         yield break;
     }
 
-    private void SniperFire()
+    private void SniperFire(float speed)
     {
         Vector2 dir = (Vector2)player.position - (Vector2)transform.position;
 
         bulletObj[1].transform.up = dir.normalized;
         bulletObj[1].transform.position = transform.position;
-        bulletSpeed = 10;
+        bulletSpeed = speed;
 
         Instantiate(bulletObj[1]).GetComponent<Bullet>().SetBulletStatus(bulletDamage, bulletSpeed);
+    }
+
+    IEnumerator MeteorShower(int count)
+    {
+
+        fireTime = fireRate;
+
+        if (isMeteorShowering)
+        {
+            fireTime = 0;
+            yield break;
+        }
+        else if (!isMeteorShowering) isMeteorShowering = true;
+
+        for (int i = 0; i< count; i++)
+        {
+            float rand = Random.Range(-8.0f, 8.0f);
+
+            Vector3 pos = new Vector3(transform.position.x + rand, transform.position.y + 3, transform.position.z);
+
+            Instantiate(bulletObj[2], pos, Quaternion.identity);
+
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        isMeteorShowering = false;
+
+        yield break;
     }
 
     protected override void Move()
@@ -159,6 +218,9 @@ public class Boss : Unit
                 break;
             case BossType.SecondBoss:
                 if (transform.position.y > 3.8f) transform.Translate(0, -1.5f * Time.deltaTime, 0);
+                break;
+            case BossType.ThirdBoss:
+                if (transform.position.y > 4) transform.Translate(0, -1.5f * Time.deltaTime, 0);
                 break;
         }
     }

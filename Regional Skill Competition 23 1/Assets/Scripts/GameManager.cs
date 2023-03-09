@@ -105,13 +105,13 @@ public class GameManager : MonoBehaviour
                 switch (currentStage)
                 {
                     case 1:
-                        monsterSpawnTime = 4;
-                        break;
-                    case 2:
                         monsterSpawnTime = 3;
                         break;
-                    case 3:
+                    case 2:
                         monsterSpawnTime = 2;
+                        break;
+                    case 3:
+                        monsterSpawnTime = 1;
                         break;
                 }
             }
@@ -130,13 +130,13 @@ public class GameManager : MonoBehaviour
                 switch (currentStage)
                 {
                     case 1:
-                        meteorSpawnTime = 7;
+                        meteorSpawnTime = 4;
                         break;
                     case 2:
-                        meteorSpawnTime = 5;
+                        meteorSpawnTime = 3;
                         break;
                     case 3:
-                        meteorSpawnTime = 3;
+                        meteorSpawnTime = 2;
                         break;
                 }
             }
@@ -152,8 +152,10 @@ public class GameManager : MonoBehaviour
                 Instantiate(Boss[0], new Vector3(0, 7, 0), Quaternion.identity);
                 break;
             case 2:
+                Instantiate(Boss[1], new Vector3(0, 8, 0), Quaternion.identity);
                 break;
             case 3:
+                Instantiate(Boss[2], new Vector3(0, 15, 0), Quaternion.identity);
                 break;
         }
         monsterSpawnable = false;
