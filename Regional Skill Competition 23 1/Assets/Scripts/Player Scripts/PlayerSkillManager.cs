@@ -84,4 +84,10 @@ public class PlayerSkillManager : MonoBehaviour
         HpUpCoolTimeImage.fillAmount = hpUpSkillCurTime / hpUpSkillCoolTime;
         HpUpSkillCount.text = hpUpSkillTime.ToString();
     }
+
+    public void SetSkillTime()
+    {
+        hpUpSkillTime = 3;
+        bombSkillTime = 3;
+    }
 }

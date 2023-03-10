@@ -99,14 +99,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea588dbcbac8dc342a1fd9b2a09c53c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 50
-  speed: 1.5
+  hp: 125
+  speed: 1
   bulletObj:
   - {fileID: 4599716477283660534, guid: 948ba9be73aa13e4984d12e316166b3b, type: 3}
   bulletLevel: 0
   bulletDamage: 10
-  bulletSpeed: 2
-  fireRate: 2
+  bulletSpeed: 3
+  fireRate: 1
   monsterType: 0
   player: {fileID: 0}
   score: 100

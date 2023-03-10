@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
 
+    [SerializeField] private GameObject Player;
     [SerializeField] private int score;
     [SerializeField] public int currentStage;
     [SerializeField] private TextMeshProUGUI ScoreText;
@@ -17,6 +18,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI GetScoreText;
     [SerializeField] private TextMeshProUGUI StageTimeText;
     [SerializeField] private TextMeshProUGUI TotalTimeText;
+    [SerializeField] private GameObject InGameUI;
+    [SerializeField] private GameObject BossHpSlider;
 
     [Header("Monster")]
     public bool monsterSpawnable;
@@ -72,6 +75,8 @@ public class GameManager : MonoBehaviour
         currentStage = stage;
         if (stage == 1)
         {
+            InGameUI.SetActive(true);
+            Instantiate(Player, transform.position, Quaternion.identity);
             totalTime = 0;
             score = 0;
         }
@@ -105,13 +110,13 @@ public class GameManager : MonoBehaviour
                 switch (currentStage)
                 {
                     case 1:
-                        monsterSpawnTime = 3;
+                        monsterSpawnTime = 4;
                         break;
                     case 2:
-                        monsterSpawnTime = 2;
+                        monsterSpawnTime = 3;
                         break;
                     case 3:
-                        monsterSpawnTime = 1;
+                        monsterSpawnTime = 2;
                         break;
                 }
             }
@@ -130,13 +135,13 @@ public class GameManager : MonoBehaviour
                 switch (currentStage)
                 {
                     case 1:
-                        meteorSpawnTime = 4;
-                        break;
-                    case 2:
                         meteorSpawnTime = 3;
                         break;
-                    case 3:
+                    case 2:
                         meteorSpawnTime = 2;
+                        break;
+                    case 3:
+                        meteorSpawnTime = 1;
                         break;
                 }
             }
@@ -145,7 +150,7 @@ public class GameManager : MonoBehaviour
 
     private void SpawnBoss()
     {
-        GameObject.Find("Boss Hp Slider").gameObject.SetActive(true);
+        BossHpSlider.SetActive(true);
         switch (currentStage)
         {
             case 1:
@@ -173,6 +178,7 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(ClearStage());
                 break;
             case 3:
+                Clear();
                 break;
         }
     }
@@ -191,6 +197,8 @@ public class GameManager : MonoBehaviour
         StageText.gameObject.SetActive(false);
         GetScoreText.gameObject.SetActive(false);
         StageTimeText.gameObject.SetActive(false);
+
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSkillManager>().SetSkillTime();
 
         getScore = 0;
         stageTime = 0;
@@ -215,5 +223,10 @@ public class GameManager : MonoBehaviour
         }
 
         TotalTimeText.text = "Total Time : " + ((int)totalTime / 60) + ":" + ((int)totalTime % 60);
+    }
+
+    private void Clear()
+    {
+        Debug.Log("Clear");
     }
 }
