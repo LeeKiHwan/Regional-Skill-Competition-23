@@ -46,7 +46,7 @@ public class PlayerSkillManager : MonoBehaviour
         UseBombSkill();
         UseHpUpSkill();
         BombSkillUI();
-        HpUpUi();
+        HpUpUI();
     }
 
     private void UseBombSkill()
@@ -79,7 +79,7 @@ public class PlayerSkillManager : MonoBehaviour
         BombSkillCount.text = bombSkillTime.ToString();
     }
 
-    private void HpUpUi()
+    private void HpUpUI()
     {
         HpUpCoolTimeImage.fillAmount = hpUpSkillCurTime / hpUpSkillCoolTime;
         HpUpSkillCount.text = hpUpSkillTime.ToString();

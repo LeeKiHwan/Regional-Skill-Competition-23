@@ -55,12 +55,14 @@ public class PlayerStatus : Unit
                     break;
             }
 
-            base.TakeDamage(lastDamage);
+            if (hp > lastDamage) hp -= lastDamage;
+            else Die();
         }
     }
 
     protected override void Die()
     {
+        GameManager.Instance.PlayerDied();
         Destroy(gameObject);
     }
 

@@ -20,6 +20,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI TotalTimeText;
     [SerializeField] private GameObject InGameUI;
     [SerializeField] private GameObject BossHpSlider;
+    [SerializeField] private TMP_InputField NameInputField;
+    [SerializeField] private GameObject InsertRankingUI;
+    [SerializeField] private GameObject RankingUI;
+    [SerializeField] private GameObject MenuUI;
+    public GameObject StartBtn;
+    public GameObject EndBtn;
+    public GameObject RankingBtn;
+    public TextMeshProUGUI GameOverText;
 
     [Header("Monster")]
     public bool monsterSpawnable;
@@ -64,6 +72,11 @@ public class GameManager : MonoBehaviour
         Timer();
     }
 
+    public void PlayerDied()
+    {
+        StartCoroutine(OnMenuUI());
+    }
+
     public void AddScore(int AdditionalScore)
     {
         score += AdditionalScore;
@@ -85,7 +98,7 @@ public class GameManager : MonoBehaviour
         DeleteMonster();
         monsterSpawnable = true;
         meteorSpawnable = true;
-        Invoke("SpawnBoss", 60);
+        Invoke("SpawnBoss", 1);
     }
 
     public void DeleteMonster()
@@ -192,7 +205,7 @@ public class GameManager : MonoBehaviour
         GetScoreText.gameObject.SetActive(true);
         StageTimeText.gameObject.SetActive(true);
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
 
         StageText.gameObject.SetActive(false);
         GetScoreText.gameObject.SetActive(false);
@@ -227,6 +240,64 @@ public class GameManager : MonoBehaviour
 
     private void Clear()
     {
-        Debug.Log("Clear");
+        currentStage = 0;
+        monsterSpawnable = false;
+        meteorSpawnable = false;
+
+        Destroy(GameObject.FindGameObjectWithTag("Player"));
+        InGameUI.SetActive(false);
+
+        if (RankingManager.Instance.IsAbleInsertRank(score)) OnInsertRankUI();
+        else
+        {
+            StartBtn.SetActive(true);
+            EndBtn.SetActive(true);
+            RankingBtn.SetActive(true);
+        }
+    }
+
+    private void OnInsertRankUI()
+    {
+        ShowRankingUI();
+        InsertRankingUI.SetActive(true);
+    }
+
+    public void InsertRankInfo()
+    {
+        RankInfo rankInfo = new RankInfo();
+        rankInfo.SetRankInfo(NameInputField.text, score);
+
+        RankingManager.Instance.InsertRankInfo(rankInfo);
+    }
+
+    public void ShowRankingUI()
+    {
+        RankingUI.SetActive(true);
+        RankingUI.GetComponent<RankingUI>().ShowRankig();
+    }
+
+    IEnumerator OnMenuUI()
+    {
+        if (GameObject.FindGameObjectWithTag("Monster"))
+        {
+            foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Monster"))
+            {
+                Destroy(obj);
+            }
+        }
+
+        InGameUI.SetActive(false);
+        GameOverText.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(3);
+
+
+        GameOverText.gameObject.SetActive(false);
+
+        StartBtn.SetActive(true);
+        EndBtn.SetActive(true);
+        RankingBtn.SetActive(true);
+
+        yield break;
     }
 }

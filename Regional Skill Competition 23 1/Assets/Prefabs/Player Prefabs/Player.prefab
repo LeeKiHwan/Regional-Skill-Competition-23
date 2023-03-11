@@ -56,7 +56,7 @@ MonoBehaviour:
   - {fileID: 239511291588953950, guid: 31759a95f27683847af9885172ed5374, type: 3}
   - {fileID: 2996201834120979817, guid: 614d0f8b2c93a0d47be89dd7af0b9327, type: 3}
   bulletLevel: 0
-  bulletDamage: 10
+  bulletDamage: 10000
   bulletSpeed: 10
   fireRate: 0.1
   fuel: 100
