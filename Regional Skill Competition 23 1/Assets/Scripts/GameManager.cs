@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public GameObject EndBtn;
     public GameObject RankingBtn;
     public TextMeshProUGUI GameOverText;
+    public GameObject BossHpUI;
 
     [Header("Monster")]
     public bool monsterSpawnable;
@@ -70,6 +71,7 @@ public class GameManager : MonoBehaviour
         SpawnMeteor();
         Score();
         Timer();
+        CheatKey();
     }
 
     public void PlayerDied()
@@ -95,16 +97,27 @@ public class GameManager : MonoBehaviour
         }
         stageTime = 0;
         getScore = 0;
-        DeleteMonster();
+
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Monster"))
+        {
+            Destroy(obj);
+            BossHpSlider.SetActive(false);
+        }
+
         monsterSpawnable = true;
         meteorSpawnable = true;
-        Invoke("SpawnBoss", 1);
+        Invoke("SpawnBoss", 60);
     }
 
     public void DeleteMonster()
     {
         foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Monster"))
         {
+            if (obj.GetComponent<Boss>() != null)
+            {
+                obj.GetComponent<Boss>().Delete();
+                return;
+            }
             Destroy(obj);
         }
     }
@@ -304,5 +317,48 @@ public class GameManager : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void CheatKey()
+    {
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            DeleteMonster();
+            BossHpSlider.SetActive(false);
+        }
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            for (int i = 0;  i<4; i++)
+            {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStatus>().BulletUpgrade();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.F3))
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSkillManager>().SetSkillTime();
+        }
+        if (Input.GetKeyDown(KeyCode.F4))
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStatus>().HpUp(100);
+        }
+        if (Input.GetKeyDown(KeyCode.F5))
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStatus>().FuelUp();
+        }
+        if (Input.GetKeyDown(KeyCode.F6))
+        {
+            switch(currentStage)
+            {
+                case 1:
+                    StartStage(2);
+                    break;
+                case 2:
+                    StartStage(3);
+                    break;
+                case 3:
+                    StartStage(1);
+                    break;
+            }
+        }
     }
 }

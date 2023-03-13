@@ -16,6 +16,8 @@ public class PlayerStatus : Unit
     [SerializeField] private Slider PlayerFuelSlider;
     [SerializeField] private TextMeshProUGUI PlayerFuelText;
 
+    public AudioClip FireSound;
+
     private void Awake()
     {
         if (GameObject.Find("Tutorial Manager")) return;
@@ -74,6 +76,7 @@ public class PlayerStatus : Unit
         if (Input.GetKey(KeyCode.J) && fireTime <= 0)
         {
             Instantiate(bulletObj[bulletLevel], transform.position, Quaternion.identity).GetComponent<Bullet>().SetBulletStatus(bulletDamage, bulletSpeed);
+            SoundManager.Instance.SFXPlay("PlayerFire", FireSound);
             fireTime = fireRate;
         }
     }

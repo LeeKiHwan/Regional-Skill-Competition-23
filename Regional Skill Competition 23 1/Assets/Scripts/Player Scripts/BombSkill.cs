@@ -8,12 +8,17 @@ public class BombSkill : MonoBehaviour
 
     private void Awake()
     {
+        foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Monster"))
+        {
+            obj.GetComponent<Unit>().TakeDamage(damage);
+        }
+        foreach(Bullet obj in FindObjectsOfType<Bullet>())
+        {
+            Destroy(obj.gameObject);
+        }
+
         Destroy(gameObject, 0.25f);
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.GetComponent<Bullet>() != null && collision.GetComponent<Bullet>().bulletType == Bullet.BulletType.monsterBullet) Destroy(collision.gameObject);
-        if (collision.GetComponent<Monster>() != null) collision.GetComponent<Unit>().TakeDamage(damage);
-    }
+
 }

@@ -28,6 +28,11 @@ public class PlayerSkillManager : MonoBehaviour
     [SerializeField] private Image HpUpCoolTimeImage;
     [SerializeField] private TextMeshProUGUI HpUpSkillCount;
 
+    [Header("Skill SFX")]
+    public AudioClip BombSound;
+    public AudioClip HpUpSound;
+    public AudioClip CoolTimeSound;
+    public TextMeshProUGUI CoolTimeText;
     
 
     private void Awake()
@@ -40,6 +45,8 @@ public class PlayerSkillManager : MonoBehaviour
 
         HpUpCoolTimeImage = GameObject.Find("HpUpSkill CoolTime").GetComponent<Image>();
         HpUpSkillCount = GameObject.Find("HpUpSkill Count Text").GetComponent<TextMeshProUGUI>();
+
+        CoolTimeText = GameObject.Find("CoolTime Text").GetComponent<TextMeshProUGUI>();
     }
 
     void Update()
@@ -57,8 +64,17 @@ public class PlayerSkillManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K) && bombSkillCurTime <= 0 && bombSkillTime > 0)
         {
             Instantiate(BombSkillObj, new Vector2(0,0), Quaternion.identity);
+            SoundManager.Instance.SFXPlay("BombSound", BombSound);
             bombSkillTime--;
             bombSkillCurTime = bombSkillCoolTime;
+        }
+        else if (Input.GetKeyDown(KeyCode.K) && bombSkillCurTime > 0 && bombSkillTime > 0)
+        {
+            StartCoroutine(CoolTime("스킬이 준비중입니다!"));
+        }
+        else if (Input.GetKeyDown(KeyCode.K) && bombSkillTime == 0)
+        {
+            StartCoroutine(CoolTime("스킬을 모두 소모했습니다."));
         }
     }
 
@@ -69,8 +85,17 @@ public class PlayerSkillManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.L) && hpUpSkillCurTime <= 0 && hpUpSkillTime > 0)
         {
             player.HpUp(hpUpValue);
+            SoundManager.Instance.SFXPlay("HpUpSound", HpUpSound);
             hpUpSkillTime--;
             hpUpSkillCurTime = hpUpSkillCoolTime;
+        }
+        else if (Input.GetKeyDown(KeyCode.L) && hpUpSkillCurTime > 0 && hpUpSkillTime > 0)
+        {
+            StartCoroutine(CoolTime("스킬이 준비중입니다!"));
+        }
+        else if (Input.GetKeyDown(KeyCode.L) && hpUpSkillTime == 0)
+        {
+            StartCoroutine(CoolTime("스킬을 모두 소모했습니다."));
         }
     }
 
@@ -90,5 +115,17 @@ public class PlayerSkillManager : MonoBehaviour
     {
         hpUpSkillTime = 3;
         bombSkillTime = 3;
+        hpUpSkillCurTime = 0;
+        bombSkillCurTime = 0;
+    }
+
+    IEnumerator CoolTime(string text)
+    {
+        SoundManager.Instance.SFXPlay(text, CoolTimeSound);
+        CoolTimeText.text = text;
+        yield return new WaitForSeconds(2);
+        CoolTimeText.text = "";
+
+        yield break;
     }
 }

@@ -45,6 +45,13 @@ public class Boss : Unit
         Destroy(gameObject);
     }
 
+    public void Delete()
+    {
+        HpSlider.gameObject.SetActive(false);
+        GameManager.Instance.KilledBoss();
+        Destroy(gameObject);
+    }
+
     protected override void Fire()
     {
         if (fireTime > 0) fireTime -= Time.deltaTime;
