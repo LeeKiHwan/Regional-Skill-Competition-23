@@ -300,4 +300,9 @@ public class GameManager : MonoBehaviour
 
         yield break;
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }

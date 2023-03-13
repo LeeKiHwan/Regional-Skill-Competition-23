@@ -34,6 +34,7 @@ public class PlayerSkillManager : MonoBehaviour
     {
         player = gameObject.GetComponent<PlayerStatus>();
 
+        if (GameObject.Find("Tutorial Manager")) return;
         BombSkillCoolTimeImage = GameObject.Find("BombSkill CoolTime").GetComponent<Image>();
         BombSkillCount = GameObject.Find("BombSkill Count Text").GetComponent<TextMeshProUGUI>();
 

@@ -18,6 +18,7 @@ public class PlayerStatus : Unit
 
     private void Awake()
     {
+        if (GameObject.Find("Tutorial Manager")) return;
         PlayerHpSlider = GameObject.Find("Hp Slider").GetComponent<Slider>();
         PlayerHpText = GameObject.Find("Hp Text").GetComponent<TextMeshProUGUI>();
 
