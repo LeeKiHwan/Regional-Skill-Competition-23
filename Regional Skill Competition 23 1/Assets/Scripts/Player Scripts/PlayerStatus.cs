@@ -130,7 +130,8 @@ public class PlayerStatus : Unit
     }
     private void FuelDown()
     {
-        if (GameManager.Instance.monsterSpawnable) fuel -= Time.deltaTime * 2;
+        if (GameManager.Instance.monsterSpawnable) fuel -= Time.deltaTime * 4;
+        if (fuel <= 0) Die();
     }
 
     private void PlayerStatusUI()

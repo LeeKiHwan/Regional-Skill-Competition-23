@@ -291,6 +291,9 @@ public class GameManager : MonoBehaviour
 
     IEnumerator OnMenuUI()
     {
+        monsterSpawnable = false;
+        meteorSpawnable = false;
+
         if (GameObject.FindGameObjectWithTag("Monster"))
         {
             foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Monster"))
