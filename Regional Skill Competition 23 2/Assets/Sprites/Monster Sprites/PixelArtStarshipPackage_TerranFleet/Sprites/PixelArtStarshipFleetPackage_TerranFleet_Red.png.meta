@@ -1,61 +1,7 @@
 fileFormatVersion: 2
-guid: 8aeb9e233fbb8f14db39770841b78b94
+guid: 29280373f4463b74f9f3e295bdeeb6f5
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 21300000
-    second: ship1-flame
-  - first:
-      213: 21300002
-    second: ship2-flame
-  - first:
-      213: 21300004
-    second: ship1
-  - first:
-      213: 21300006
-    second: ship2
-  - first:
-      213: 21300008
-    second: ship2-lines
-  - first:
-      213: 21300010
-    second: fireball-red-small
-  - first:
-      213: 21300012
-    second: fireball-red-med
-  - first:
-      213: 21300014
-    second: fireball-red-big
-  - first:
-      213: 21300016
-    second: fireball-red-tail-small
-  - first:
-      213: 21300018
-    second: fireball-red-tail-med
-  - first:
-      213: 21300020
-    second: fireball-red-tail-big
-  - first:
-      213: 21300022
-    second: fireball-blue-small
-  - first:
-      213: 21300024
-    second: fireball-blue-med
-  - first:
-      213: 21300026
-    second: fireball-blue-big
-  - first:
-      213: 21300028
-    second: fireball-blue-tail-small
-  - first:
-      213: 21300030
-    second: fireball-blue-tail-med
-  - first:
-      213: 21300032
-    second: fireball-blue-tail-big
-  - first:
-      213: 21300034
-    second: ship1-lines
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -102,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -117,7 +63,7 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 1
+  applyGammaDecoding: 0
   swizzle: 50462976
   cookieLightType: 1
   platformSettings:
@@ -126,114 +72,48 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 2
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 2
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ship1-flame
+      name: PixelArtStarshipFleetPackage_TerranFleet_Red_0
       rect:
         serializedVersion: 2
-        x: 32
-        y: 203
-        width: 11
-        height: 19
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9bb9c392bf5b398438b36979b8fe5862
-      internalID: 21300000
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ship2-flame
-      rect:
-        serializedVersion: 2
-        x: 121
-        y: 216
-        width: 13
-        height: 21
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 58ee8ab1c9cc1934e8c3cebe3246fbc5
-      internalID: 21300002
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ship1
-      rect:
-        serializedVersion: 2
-        x: 13
-        y: 150
-        width: 49
-        height: 46
+        x: 3
+        y: 481
+        width: 26
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -241,20 +121,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d9bfbbc186838c42a82f6fa3173e1e6
-      internalID: 21300004
+      spriteID: 074331d70aab55844b01fd6d5c83b72c
+      internalID: -190316847
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ship2
+      name: PixelArtStarshipFleetPackage_TerranFleet_Red_1
       rect:
         serializedVersion: 2
-        x: 91
-        y: 153
-        width: 73
-        height: 54
+        x: 35
+        y: 481
+        width: 26
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -262,20 +142,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3e9b6a12a0da6ce478283044ab9745aa
-      internalID: 21300006
+      spriteID: d4a4ec47f83ac37409bc67ad2fe1241e
+      internalID: 1989257172
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ship2-lines
+      name: PixelArtStarshipFleetPackage_TerranFleet_Red_2
       rect:
         serializedVersion: 2
-        x: 102
-        y: 137
-        width: 53
-        height: 6
+        x: 76
+        y: 450
+        width: 40
+        height: 60
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -283,20 +163,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83085eb0be2e105459b5fb496d733374
-      internalID: 21300008
+      spriteID: 984634a976f8e9245ab5d261894f94b2
+      internalID: 1317066523
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fireball-red-small
+      name: PixelArtStarshipFleetPackage_TerranFleet_Red_3
       rect:
         serializedVersion: 2
-        x: 38
-        y: 88
-        width: 5
-        height: 5
+        x: 136
+        y: 403
+        width: 48
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -304,20 +184,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e216f4258791e634781f95c671ce667a
-      internalID: 21300010
+      spriteID: 47d7ebd532585fe439860067126c9997
+      internalID: -2810039
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fireball-red-med
+      name: PixelArtStarshipFleetPackage_TerranFleet_Red_4
       rect:
         serializedVersion: 2
-        x: 51
-        y: 88
-        width: 7
-        height: 7
+        x: 197
+        y: 398
+        width: 54
+        height: 94
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -325,20 +205,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83d935976a32280438b65120e5564896
-      internalID: 21300012
+      spriteID: d1a64f1ae7913bb418e598bd7fc163e0
+      internalID: 1374327013
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fireball-red-big
+      name: PixelArtStarshipFleetPackage_TerranFleet_Red_5
       rect:
         serializedVersion: 2
-        x: 63
-        y: 88
-        width: 9
-        height: 9
+        x: 292
+        y: 399
+        width: 56
+        height: 95
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -346,83 +226,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0472379131b15234e93bd77f3e0a0399
-      internalID: 21300014
+      spriteID: d01aa08098f12ae4ca91ea951b26320a
+      internalID: -1412548947
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fireball-red-tail-small
+      name: PixelArtStarshipFleetPackage_TerranFleet_Red_6
       rect:
         serializedVersion: 2
-        x: 90
-        y: 89
-        width: 5
-        height: 11
-      alignment: 9
-      pivot: {x: 0.48836213, y: 0.30421934}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2c64570bcb41c6d449faa523caa51603
-      internalID: 21300016
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fireball-red-tail-med
-      rect:
-        serializedVersion: 2
-        x: 103
-        y: 89
-        width: 7
-        height: 16
-      alignment: 9
-      pivot: {x: 0.5166321, y: 0.2671795}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 413cfa4794710434fa822d7919bbb8da
-      internalID: 21300018
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fireball-red-tail-big
-      rect:
-        serializedVersion: 2
-        x: 115
-        y: 89
-        width: 9
-        height: 27
-      alignment: 9
-      pivot: {x: 0.5323376, y: 0.18957208}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 28d18d395bd5a2d438e1da990f35a373
-      internalID: 21300020
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fireball-blue-small
-      rect:
-        serializedVersion: 2
-        x: 38
-        y: 53
-        width: 5
-        height: 5
+        x: 395
+        y: 261
+        width: 102
+        height: 246
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -430,20 +247,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: caa29ec6154dc7c4981c00c6d6c6ac5e
-      internalID: 21300022
+      spriteID: 09927d7cd71331d4a8cbd64c4cecb663
+      internalID: 926013219
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fireball-blue-med
+      name: PixelArtStarshipFleetPackage_TerranFleet_Red_7
       rect:
         serializedVersion: 2
-        x: 51
-        y: 53
-        width: 7
-        height: 7
+        x: 3
+        y: 450
+        width: 26
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -451,20 +268,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7bce256670d89ee49a978ba9c6d3af0d
-      internalID: 21300024
+      spriteID: 491fc2487f7ba7c4c9314d2c22462b5c
+      internalID: -1857802515
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fireball-blue-big
+      name: PixelArtStarshipFleetPackage_TerranFleet_Red_8
       rect:
         serializedVersion: 2
-        x: 63
-        y: 53
-        width: 9
-        height: 9
+        x: 33
+        y: 449
+        width: 30
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -472,83 +289,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 039ffc7f69d1e754181189f05c0aac12
-      internalID: 21300026
+      spriteID: bfb04148c95165042981ed9efa0616b9
+      internalID: -857440130
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fireball-blue-tail-small
+      name: PixelArtStarshipFleetPackage_TerranFleet_Red_9
       rect:
         serializedVersion: 2
-        x: 90
-        y: 53
-        width: 5
-        height: 11
-      alignment: 9
-      pivot: {x: 0.5291046, y: 0.27509376}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 15f7ab68e7cf35b48844432d399bb322
-      internalID: 21300028
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fireball-blue-tail-med
-      rect:
-        serializedVersion: 2
-        x: 103
-        y: 53
-        width: 7
-        height: 16
-      alignment: 9
-      pivot: {x: 0.520789, y: 0.25442195}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 65d1679abd483dd49a73b1068b00b4e5
-      internalID: 21300030
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fireball-blue-tail-big
-      rect:
-        serializedVersion: 2
-        x: 115
-        y: 53
-        width: 9
-        height: 27
-      alignment: 9
-      pivot: {x: 0.53233844, y: 0.20355436}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6e402dccd6791e84db18c65ae00b8b22
-      internalID: 21300032
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ship1-lines
-      rect:
-        serializedVersion: 2
-        x: 19
-        y: 126
-        width: 37
-        height: 18
+        x: 5
+        y: 386
+        width: 54
+        height: 60
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -556,8 +310,134 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4cbb2891ceaf9224d8891a206426d715
-      internalID: 21300034
+      spriteID: 146df3024c982674b9f23119a4636179
+      internalID: -1701857316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtStarshipFleetPackage_TerranFleet_Red_10
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 386
+        width: 54
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70247912ae1717944a2da7880670b555
+      internalID: -845985947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtStarshipFleetPackage_TerranFleet_Red_11
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 261
+        width: 84
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 540a4a20797e6724c8bec564a0b80a18
+      internalID: 1732990432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtStarshipFleetPackage_TerranFleet_Red_12
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 259
+        width: 104
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d999d43b9f326f4ba96419eefd6a7e0
+      internalID: -690628191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtStarshipFleetPackage_TerranFleet_Red_13
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 258
+        width: 74
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7a6822f8114484439f083336e44481a
+      internalID: 589153710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtStarshipFleetPackage_TerranFleet_Red_14
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 8
+        width: 156
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67861a98c64b6b64e998abfd7bb2d933
+      internalID: -195467053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtStarshipFleetPackage_TerranFleet_Red_15
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 8
+        width: 196
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e52e3322bfe62ee42b8a363de5ab828d
+      internalID: 88512497
       vertices: []
       indices: 
       edges: []
@@ -565,7 +445,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 29f80070d8206674eb14137f7bc56e6b
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -573,24 +453,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      fireball-blue-tail-big: 21300032
-      fireball-blue-tail-small: 21300028
-      ship2: 21300006
-      ship2-lines: 21300008
-      fireball-blue-med: 21300024
-      fireball-red-tail-small: 21300016
-      fireball-red-med: 21300012
-      ship1-flame: 21300000
-      fireball-red-tail-big: 21300020
-      ship2-flame: 21300002
-      fireball-blue-small: 21300022
-      fireball-blue-tail-med: 21300030
-      fireball-blue-big: 21300026
-      fireball-red-tail-med: 21300018
-      ship1: 21300004
-      ship1-lines: 21300034
-      fireball-red-big: 21300014
-      fireball-red-small: 21300010
+      PixelArtStarshipFleetPackage_TerranFleet_Red_0: -190316847
+      PixelArtStarshipFleetPackage_TerranFleet_Red_15: 88512497
+      PixelArtStarshipFleetPackage_TerranFleet_Red_7: -1857802515
+      PixelArtStarshipFleetPackage_TerranFleet_Red_9: -1701857316
+      PixelArtStarshipFleetPackage_TerranFleet_Red_6: 926013219
+      PixelArtStarshipFleetPackage_TerranFleet_Red_3: -2810039
+      PixelArtStarshipFleetPackage_TerranFleet_Red_10: -845985947
+      PixelArtStarshipFleetPackage_TerranFleet_Red_11: 1732990432
+      PixelArtStarshipFleetPackage_TerranFleet_Red_12: -690628191
+      PixelArtStarshipFleetPackage_TerranFleet_Red_13: 589153710
+      PixelArtStarshipFleetPackage_TerranFleet_Red_1: 1989257172
+      PixelArtStarshipFleetPackage_TerranFleet_Red_4: 1374327013
+      PixelArtStarshipFleetPackage_TerranFleet_Red_2: 1317066523
+      PixelArtStarshipFleetPackage_TerranFleet_Red_5: -1412548947
+      PixelArtStarshipFleetPackage_TerranFleet_Red_14: -195467053
+      PixelArtStarshipFleetPackage_TerranFleet_Red_8: -857440130
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
