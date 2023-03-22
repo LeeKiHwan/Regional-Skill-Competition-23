@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
 
     private void Awake()
     {
-        Destroy(gameObject, 10);
+        Destroy(gameObject, 5);
     }
 
     private void Update()
@@ -30,7 +30,15 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && bulletType == BulletType.MonsterBullet) collision.GetComponent<PlayerStatus>().TakeDamage(damage);
-        if (collision.CompareTag("Monster") && bulletType == BulletType.PlayerBullet) collision.GetComponent<Unit>().TakeDamage(damage);
+        if (collision.CompareTag("Player") && bulletType == BulletType.MonsterBullet)
+        {
+            collision.GetComponent<PlayerStatus>().TakeDamage(damage);
+            Destroy(gameObject);
+        }
+        if (collision.CompareTag("Monster") && bulletType == BulletType.PlayerBullet)
+        {
+            collision.GetComponent<Unit>().TakeDamage(damage);
+            Destroy(gameObject);
+        }
     }
 }

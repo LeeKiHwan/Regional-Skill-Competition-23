@@ -8,12 +8,14 @@ public class Monster : Unit
     {
         Tank,
         Assault,
-        Speed
+        Speed,
+        Meteor
     }
 
     [Header("Monster Status")]
     public MonsterType monsterType;
     public int score;
+    public GameObject[] ItemObj;
 
     private void Update()
     {
@@ -21,14 +23,10 @@ public class Monster : Unit
         Fire();
     }
 
-    public override void TakeDamage(int damage)
-    {
-        base.TakeDamage(damage);
-    }
-
     public override void Die()
     {
         GameManager.instance.AddScore(score);
+        DropItem();
         Destroy(gameObject);
     }
 
@@ -56,5 +54,38 @@ public class Monster : Unit
     public override void Move()
     {
         transform.Translate(0, -speed * Time.deltaTime, 0);
+    }
+
+    public void DropItem()
+    {
+        int rand = Random.Range(0, 10);
+
+        switch(rand)
+        {
+            case 0: case 1: case 2:
+                Instantiate(ItemObj[0], transform.position, Quaternion.identity);
+                break;
+            case 3:
+                Instantiate(ItemObj[1], transform.position, Quaternion.identity);
+                break;
+            case 4:
+                Instantiate(ItemObj[2], transform.position, Quaternion.identity);
+                break;
+            case 5:
+                Instantiate(ItemObj[3], transform.position, Quaternion.identity);
+                break;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player") && monsterType == MonsterType.Meteor)
+        {
+            collision.gameObject.GetComponent<PlayerStatus>().TakeDamage(bulletDamage);
+        }
+        if (collision.gameObject.name == "MonsterKillZone")
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Monster
+  - MonsterBullet
   layers:
   - Default
   - TransparentFX
@@ -41,4 +42,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Boss
+    uniqueID: 3038746451
+    locked: 0
+  - name: Monster
+    uniqueID: 3698448237
+    locked: 0
+  - name: Player
+    uniqueID: 4103615195
     locked: 0
