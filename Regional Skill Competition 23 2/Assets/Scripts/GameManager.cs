@@ -12,8 +12,8 @@ public class GameManager : MonoBehaviour
     public PlayerStatus PlayerStatus;
 
     [Header("Game Status")]
-    public int totalScore;
-    public float totalTime;
+    public static int totalScore;
+    public static float totalTime;
     public int currentStage;
     public int stageScore;
     public float stageTime;
@@ -39,12 +39,13 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(this);
         }
+
+        StartCoroutine(StartGameCo());
     }
 
     private void Update()
@@ -52,8 +53,6 @@ public class GameManager : MonoBehaviour
         SpawnMonster();
         SpawnMeteor();
         GameTimer();
-
-        if (Input.GetKeyDown(KeyCode.P)) StartGame();
     }
 
     public void AddScore(int additionalScore)
@@ -101,11 +100,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void StartGame()
+    public IEnumerator StartGameCo()
     {
-        SceneManager.LoadScene("InGameScene");
-        Instantiate(PlayerObj, new Vector3(0, 0, 0), Quaternion.identity);
+        PlayerObj = GameObject.FindGameObjectWithTag("Player");
+        PlayerStatus = PlayerObj.GetComponent<PlayerStatus>();
+
+        totalScore = 0;
+        totalTime = 0;
+
+        yield return new WaitForSeconds(3);
+
         StartStage(1);
+
+        yield break;
     }
 
     public void StartStage(int startStage)
@@ -114,7 +121,7 @@ public class GameManager : MonoBehaviour
 
         stageScore = 0;
         stageTime = 0;
-        
+
         monsterSpawnable = true;
         meteorSpawnable = true;
 
@@ -143,18 +150,13 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
-        SceneManager.LoadScene("MenuScene");
+        currentStage = 0;
+        SceneManager.LoadScene("EndGameScene");
     }
 
-    public void RankInsertUIOn()
+    public IEnumerator PlayerDie()
     {
-
+        StartCoroutine(UIManager.instance.GameOverTextOn("GameOver"));
+        yield break;
     }
-
-    public void PlayerDie()
-    {
-        EndGame();
-    }
-
-
 }

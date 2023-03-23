@@ -45,7 +45,7 @@ public class PlayerStatus : Unit
 
     public override void Die()
     {
-        GameManager.instance.PlayerDie();
+        StartCoroutine(GameManager.instance.PlayerDie());
         Destroy(gameObject);
     }
 

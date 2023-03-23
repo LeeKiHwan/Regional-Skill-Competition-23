@@ -85,8 +85,8 @@ public class UIManager : MonoBehaviour
 
     public void GameInfoTextShow()
     {
-        ScoreText.text = "Score : " + GameManager.instance.totalScore.ToString();
-        TimeText.text = "TotalTime : " + (int)GameManager.instance.totalTime / 60 + "m " + (int)GameManager.instance.totalTime % 60 + "s";
+        ScoreText.text = "Score : " + GameManager.totalScore.ToString();
+        TimeText.text = "TotalTime : " + (int)GameManager.totalTime / 60 + "m " + (int)GameManager.totalTime % 60 + "s";
     }
 
     public IEnumerator StageInfoTextShow()
@@ -113,8 +113,13 @@ public class UIManager : MonoBehaviour
         BossHpSlider.gameObject.SetActive(onOrOff);
     }
 
-    public void GameOverTextOn(string text)
+    public IEnumerator GameOverTextOn(string text)
     {
+        GameOverText.text = text;
+        yield return new WaitForSeconds(3);
 
+        GameManager.instance.EndGame();
+
+        yield break;
     }
 }
