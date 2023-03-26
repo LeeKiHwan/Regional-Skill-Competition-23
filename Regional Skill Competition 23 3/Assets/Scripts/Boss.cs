@@ -14,6 +14,7 @@ public class Boss : Unit
     public BossType bossType;
     public int maxHp;
     public int score;
+    public bool isDie;
 
     private void Update()
     {
@@ -105,8 +106,13 @@ public class Boss : Unit
 
     public override void Die()
     {
-        InGameManager.instance.AddScore(score);
-        InGameManager.instance.BossClear();
-        Destroy(gameObject);
+        if (!isDie)
+        {
+            Debug.Log("die");
+            isDie = true;
+            InGameManager.instance.BossClear();
+            InGameManager.instance.AddScore(score);
+            Destroy(gameObject);
+        }
     }
 }

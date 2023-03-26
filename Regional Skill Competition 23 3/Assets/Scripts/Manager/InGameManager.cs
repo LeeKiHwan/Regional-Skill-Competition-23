@@ -93,13 +93,14 @@ public class InGameManager : MonoBehaviour
 
     public void StartStage(int stage)
     {
+        currentStage = stage;
+
         if (stage == 4)
         {
             EndGame();
             return;
         }
 
-        currentStage = stage;
         monsterSpawnable = true;
         bossSpawnable = true;
         bossSpawnCurTime = bossSpawnRate;

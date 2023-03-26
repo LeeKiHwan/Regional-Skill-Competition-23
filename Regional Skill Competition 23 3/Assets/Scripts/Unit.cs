@@ -40,7 +40,7 @@ public abstract class Unit : MonoBehaviour
             Vector2 dir = randPlayerPos - startPos;
 
             GameObject bullet = Instantiate(BulletObj[0], startPos, Quaternion.identity);
-            bullet.GetComponent<Bullet>().SetBulletStatus(bulletDamage, bulletSpeed);
+            bullet.GetComponent<Bullet>().SetBulletStatus(bulletDamage, bulletSpeed, 0);
             bullet.transform.up = dir.normalized;
         }
     }
@@ -57,7 +57,7 @@ public abstract class Unit : MonoBehaviour
             BulletObj[0].transform.position = transform.position;
             BulletObj[0].transform.up = dir.normalized;
 
-            Instantiate(BulletObj[0]).GetComponent<Bullet>().SetBulletStatus(bulletDamage, bulletSpeed);
+            Instantiate(BulletObj[0]).GetComponent<Bullet>().SetBulletStatus(bulletDamage, bulletSpeed, 0);
 
             yield return new WaitForSeconds(fireRate);
         }

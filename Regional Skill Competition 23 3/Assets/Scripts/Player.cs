@@ -7,6 +7,8 @@ public class Player : Unit
     [Header("PlayerStatus")]
     public float fuel;
     public float invcTime;
+    public float autoFireRate;
+    public float autoFireCurTime;
 
     [Header("Skill")]
     public float bombCurTime;
@@ -29,6 +31,7 @@ public class Player : Unit
     {
         Move();
         Fire();
+        AutoFire();
         FuelDown();
         InvcTimeDown();
 
@@ -60,26 +63,32 @@ public class Player : Unit
     public void BulletFire()
     {
         SoundManager.instance.SFXPlay("PlayerFire", fireSound);
-        float dis = 0.3f;
-        for (int i = 1; i <= bulletLevel; i++)
+        float dis = 0.2f;
+
+        for (int i = 0; i < bulletLevel; i++)
         {
-            Vector3 firePos = transform.position;
-            if (bulletLevel % 2 != 0)
-            {
-                if (i == 2) firePos.x += dis;
-                if (i == 3) firePos.x -= dis;
-                Instantiate(BulletObj[0], firePos, Quaternion.identity).GetComponent<Bullet>().SetBulletStatus(bulletDamage, bulletSpeed);
-            }
-            else
-            {
-                if (i == 1) firePos.x += dis * 0.5f;
-                if (i == 2) firePos.x -= dis * 0.5f;
-                if (i == 3) firePos.x += dis * 2;
-                if (i == 4) firePos.x -= dis * 2;
-                Instantiate(BulletObj[0], firePos, Quaternion.identity).GetComponent<Bullet>().SetBulletStatus(bulletDamage, bulletSpeed);
-            }
+            Vector3 pos = transform.position;
+
+            Instantiate(BulletObj[0], new Vector3(pos.x + (dis * i), pos.y, 0), Quaternion.identity).GetComponent<Bullet>().SetBulletStatus(bulletDamage, bulletSpeed, 0.75f * i);
+            Instantiate(BulletObj[0], new Vector3(pos.x - (dis * i), pos.y, 0), Quaternion.identity).GetComponent<Bullet>().SetBulletStatus(bulletDamage, bulletSpeed, -0.75f * i);
         }
+
         fireCurTime = fireRate;
+    }
+
+    public void AutoFire()
+    {
+        if (autoFireCurTime > 0) autoFireCurTime -= Time.deltaTime;
+
+        else if (autoFireCurTime <= 0 && GameObject.FindGameObjectWithTag("Monster"))
+        {
+            Vector2 target = (Vector2)GameObject.FindGameObjectWithTag("Monster").transform.position - (Vector2)transform.position;
+            BulletObj[1].transform.position = transform.position;
+            BulletObj[1].transform.up = target.normalized;
+
+            Instantiate(BulletObj[1]).GetComponent<Bullet>().SetBulletStatus(bulletDamage, bulletSpeed, 0);
+            autoFireCurTime = autoFireRate;
+        }
     }
 
     public override void Move()
@@ -128,6 +137,7 @@ public class Player : Unit
         if (bulletLevel < 4)
         {
             bulletLevel++;
+            autoFireRate -= 0.05f;
         }
     }
 
@@ -140,7 +150,6 @@ public class Player : Unit
             {
                 SoundManager.instance.SFXPlay("BombSkill", bombSound);
                 GameObject BombObj = Instantiate(bombObj, new Vector3(0,0,0), Quaternion.identity);
-                Destroy(BombObj, 0.25f);
                 foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Monster")) obj.GetComponent<Unit>().TakeDamage(bombDamage);
                 foreach (GameObject obj in GameObject.FindGameObjectsWithTag("MonsterBullet")) Destroy(obj);
                 bombTime--;

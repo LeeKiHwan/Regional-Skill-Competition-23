@@ -1705,7 +1705,7 @@ MonoBehaviour:
   - {fileID: 3724363220409092670, guid: b893339225059fa4e99d7ca894393829, type: 3}
   - {fileID: 2309035276167706958, guid: 102b6e65257fa8d4ab84a82d51c43756, type: 3}
   BossClass: {fileID: 0}
-  bossSpawnRate: 5
+  bossSpawnRate: 10
   bossSpawnCurTime: 0
   bossSpawnable: 0
 --- !u!1 &1139572689
@@ -2352,7 +2352,8 @@ MonoBehaviour:
   speed: 5
   BulletObj:
   - {fileID: 5961903054869109587, guid: 46566f5933c25264d807ffe6a2e96963, type: 3}
-  bulletDamage: 500
+  - {fileID: 3329534443083697310, guid: 2821768369801fa4d8bcd5053f52bdc1, type: 3}
+  bulletDamage: 10
   bulletSpeed: 15
   bulletLevel: 1
   fireRate: 0.1
@@ -2360,6 +2361,8 @@ MonoBehaviour:
   assaultFiring: 0
   fuel: 100
   invcTime: 0
+  autoFireRate: 0.25
+  autoFireCurTime: 0
   bombCurTime: 0
   bombCoolTime: 10
   bombTime: 3
