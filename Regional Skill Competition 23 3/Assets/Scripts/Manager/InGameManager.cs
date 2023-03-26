@@ -104,6 +104,8 @@ public class InGameManager : MonoBehaviour
         bossSpawnable = true;
         bossSpawnCurTime = bossSpawnRate;
 
+        PlayerClass.SkillReset();
+
         stageScore = 0;
         stageTime = 0;
     }

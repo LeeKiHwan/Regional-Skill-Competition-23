@@ -17,6 +17,13 @@ public class Player : Unit
     public float hpUpCoolTime;
     public int hpUpTime;
     public int hpUpValue;
+    public GameObject bombObj;
+
+    [Header("SFX")]
+    public AudioClip fireSound;
+    public AudioClip hitSound;
+    public AudioClip bombSound;
+    public AudioClip hpUpSound;
 
     private void Update()
     {
@@ -31,7 +38,11 @@ public class Player : Unit
 
     public override void TakeDamage(int damage)
     {
-        if (invcTime <= 0) base.TakeDamage(damage);
+        if (invcTime <= 0)
+        {
+            SoundManager.instance.SFXPlay("PlayerHit", hitSound);
+            base.TakeDamage(damage);
+        }
     }
 
     public override void Die()
@@ -48,6 +59,7 @@ public class Player : Unit
 
     public void BulletFire()
     {
+        SoundManager.instance.SFXPlay("PlayerFire", fireSound);
         float dis = 0.3f;
         for (int i = 1; i <= bulletLevel; i++)
         {
@@ -126,6 +138,9 @@ public class Player : Unit
         {
             if (bombCurTime <= 0 && bombTime > 0)
             {
+                SoundManager.instance.SFXPlay("BombSkill", bombSound);
+                GameObject BombObj = Instantiate(bombObj, new Vector3(0,0,0), Quaternion.identity);
+                Destroy(BombObj, 0.25f);
                 foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Monster")) obj.GetComponent<Unit>().TakeDamage(bombDamage);
                 foreach (GameObject obj in GameObject.FindGameObjectsWithTag("MonsterBullet")) Destroy(obj);
                 bombTime--;
@@ -142,6 +157,7 @@ public class Player : Unit
         {
             if (hpUpCurTime <= 0 && hpUpTime > 0)
             {
+                SoundManager.instance.SFXPlay("HpUpSkill", hpUpSound);
                 HpUp(hpUpValue);
                 hpUpTime--;
                 hpUpCurTime = hpUpCoolTime;

@@ -2368,6 +2368,11 @@ MonoBehaviour:
   hpUpCoolTime: 10
   hpUpTime: 3
   hpUpValue: 20
+  bombObj: {fileID: 8095044228559766911, guid: 60d3b95b6766c384e9a7c64b1230456d, type: 3}
+  fireSound: {fileID: 8300000, guid: e88084c6f293c324db2b4dcf575d60dc, type: 3}
+  hitSound: {fileID: 8300000, guid: 75adfe9a619833445a701305b983e548, type: 3}
+  bombSound: {fileID: 8300000, guid: a764377339b869e459f5e53fb9258f73, type: 3}
+  hpUpSound: {fileID: 8300000, guid: 0bd05763df902854a80475577a26666a, type: 3}
 --- !u!1 &1478608366
 GameObject:
   m_ObjectHideFlags: 0
