@@ -1705,7 +1705,7 @@ MonoBehaviour:
   - {fileID: 3724363220409092670, guid: b893339225059fa4e99d7ca894393829, type: 3}
   - {fileID: 2309035276167706958, guid: 102b6e65257fa8d4ab84a82d51c43756, type: 3}
   BossClass: {fileID: 0}
-  bossSpawnRate: 10
+  bossSpawnRate: 60
   bossSpawnCurTime: 0
   bossSpawnable: 0
 --- !u!1 &1139572689

@@ -14,6 +14,11 @@ public class Item : MonoBehaviour
 
     public ItemType itemType;
 
+    private void Awake()
+    {
+        Destroy(gameObject, 10);
+    }
+
     private void Update()
     {
         transform.Translate(0, -2 * Time.deltaTime, 0);

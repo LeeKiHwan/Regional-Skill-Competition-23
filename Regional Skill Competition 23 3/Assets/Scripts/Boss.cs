@@ -49,7 +49,7 @@ public class Boss : Unit
 
     public void FirstBossFire()
     {
-        int rand = Random.Range(0, 3);
+        int rand = Random.Range(0, 4);
         switch (rand)
         {
             case 0:
@@ -61,13 +61,16 @@ public class Boss : Unit
             case 2:
                 StartCoroutine(AssaultShot(2, bulletDamage, bulletSpeed + 5, 0.5f));
                 break;
+            case 3:
+                StartCoroutine(RandAssaultShot(10, bulletDamage, bulletSpeed, 0.25f, 4));
+                break;
         }
         fireCurTime = fireRate;
     }
 
     public void SecondBossFire()
     {
-        int rand = Random.Range(0, 3);
+        int rand = Random.Range(0, 4);
         switch (rand)
         {
             case 0:
@@ -80,13 +83,16 @@ public class Boss : Unit
             case 2:
                 StartCoroutine(AssaultShot(3, bulletDamage, bulletSpeed + 5, 0.3f));
                 break;
+            case 3:
+                StartCoroutine(RandAssaultShot(15, bulletDamage, bulletSpeed, 0.2f, 5));
+                break;
         }
         fireCurTime = fireRate;
     }
 
     public void ThirdBossFire()
     {
-        int rand = Random.Range(0, 3);
+        int rand = Random.Range(0, 4);
         switch (rand)
         {
             case 0:
@@ -99,6 +105,9 @@ public class Boss : Unit
                 break;
             case 2:
                 StartCoroutine(AssaultShot(3, bulletDamage, bulletSpeed + 5, 0.3f));
+                break;
+            case 3:
+                StartCoroutine(RandAssaultShot(20, bulletDamage, bulletSpeed, 0.1f, 6));
                 break;
         }
         fireCurTime = fireRate;

@@ -44,7 +44,12 @@ public class Player : Unit
         if (invcTime <= 0)
         {
             SoundManager.instance.SFXPlay("PlayerHit", hitSound);
-            base.TakeDamage(damage);
+            if (hp - damage <= 0) Die();
+            else
+            {
+                hp -= damage;
+                InvcTimeUp(1.5f);
+            }
         }
     }
 
@@ -65,12 +70,12 @@ public class Player : Unit
         SoundManager.instance.SFXPlay("PlayerFire", fireSound);
         float dis = 0.2f;
 
-        for (int i = 0; i < bulletLevel; i++)
+        for (int i = 1; i <= bulletLevel; i++)
         {
             Vector3 pos = transform.position;
 
-            Instantiate(BulletObj[0], new Vector3(pos.x + (dis * i), pos.y, 0), Quaternion.identity).GetComponent<Bullet>().SetBulletStatus(bulletDamage, bulletSpeed, 0.75f * i);
-            Instantiate(BulletObj[0], new Vector3(pos.x - (dis * i), pos.y, 0), Quaternion.identity).GetComponent<Bullet>().SetBulletStatus(bulletDamage, bulletSpeed, -0.75f * i);
+            Instantiate(BulletObj[0], new Vector3(pos.x + (dis * i), pos.y, 0), Quaternion.identity).GetComponent<Bullet>().SetBulletStatus(bulletDamage, bulletSpeed, 0.5f * i);
+            Instantiate(BulletObj[0], new Vector3(pos.x - (dis * i), pos.y, 0), Quaternion.identity).GetComponent<Bullet>().SetBulletStatus(bulletDamage, bulletSpeed, -0.5f * i);
         }
 
         fireCurTime = fireRate;

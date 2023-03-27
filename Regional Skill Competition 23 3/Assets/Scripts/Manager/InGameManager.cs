@@ -70,12 +70,39 @@ public class InGameManager : MonoBehaviour
             if (monsterSpawnCurTime > 0) monsterSpawnCurTime -= Time.deltaTime;
             else
             {
-                Vector3 randPos = new Vector3(Random.Range(-4f, 4f), 6, 0);
                 int rand = Random.Range(0, 4);
-                Instantiate(MonsterObjs[rand], randPos, Quaternion.identity);
+                switch(rand)
+                {
+                    case 0:
+                        StartCoroutine(SpeedSpawn());
+                        break;
+                    case 1:
+                        AssaultSpawn();
+                        break;
+                }
                 monsterSpawnCurTime = monsterSpawnRate[currentStage - 1];
             }
         }
+    }
+
+    public IEnumerator SpeedSpawn()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            Instantiate(MonsterObjs[2], new Vector3(3, 6, 0), Quaternion.identity);
+            Instantiate(MonsterObjs[2], new Vector3(-3, 6, 0), Quaternion.identity);
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        yield break;
+    }
+
+    public void AssaultSpawn()
+    {
+        Instantiate(MonsterObjs[0], new Vector3(2, 6, 0), Quaternion.identity);
+        Instantiate(MonsterObjs[0], new Vector3(-2, 6, 0), Quaternion.identity);
+        Instantiate(MonsterObjs[0], new Vector3(4, 7, 0), Quaternion.identity);
+        Instantiate(MonsterObjs[0], new Vector3(-4, 7, 0), Quaternion.identity);
     }
 
     public IEnumerator StartGame()

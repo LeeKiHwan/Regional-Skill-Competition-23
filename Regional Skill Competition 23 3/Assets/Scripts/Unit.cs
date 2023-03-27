@@ -65,4 +65,25 @@ public abstract class Unit : MonoBehaviour
         assaultFiring = false;
         yield break;
     }
+
+    public IEnumerator RandAssaultShot(int bulletCount, int bulletDamage, float bulletSpeed, float fireRate, float angle)
+    {
+        for (int i = 0; i < bulletCount; i++)
+        {
+            float x = Random.Range(-angle, angle);
+            float y = Random.Range(-angle, angle);
+
+            Vector2 randPlayerPos = new Vector2(InGameManager.instance.PlayerObj.transform.position.x + x, InGameManager.instance.PlayerObj.transform.position.y + y);
+            Vector2 dir = randPlayerPos - (Vector2)transform.position;
+
+            GameObject obj = Instantiate(BulletObj[0], transform.position, Quaternion.identity);
+            obj.GetComponent<Bullet>().SetBulletStatus(bulletDamage, bulletSpeed, 0);
+            obj.transform.up = dir.normalized;
+
+            yield return new WaitForSeconds(fireRate);
+        }
+
+        assaultFiring = false;
+        yield break;
+    }
 }
