@@ -387,7 +387,7 @@ MonoBehaviour:
   - {fileID: 3361504041048618903, guid: ba5d2295c671bc146abf8490d9caf2d1, type: 3}
   bossSpawnable: 0
   bossSpawnCurTime: 0
-  bossSpawnRate: 60
+  bossSpawnRate: 10
   stageScore: 0
   stageTime: 0
 --- !u!1 &297480295

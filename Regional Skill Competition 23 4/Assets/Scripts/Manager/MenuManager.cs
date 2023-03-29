@@ -9,6 +9,11 @@ public class MenuManager : MonoBehaviour
     public GameObject rankingUI;
     public GameObject rankInfoText;
 
+    public void SetGameDifc(int difc)
+    {
+        InGameManager.difficulty = difc;
+    }
+
     public void StartGame()
     {
         SceneManager.LoadScene("InGameScene");

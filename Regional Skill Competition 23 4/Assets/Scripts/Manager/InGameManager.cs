@@ -15,7 +15,7 @@ public class InGameManager : MonoBehaviour
     public int curStage;
     public static int totalScore;
     public static float totalTime;
-    public int difficulty;
+    public static int difficulty;
 
     [Header("Spawn Info")]
     public GameObject[] monsterObjs;
@@ -45,6 +45,7 @@ public class InGameManager : MonoBehaviour
         Timer();
         MonsterSpawn();
         BossSpawn();
+        CheatKey();
     }
 
     public void StartGame()
@@ -60,7 +61,17 @@ public class InGameManager : MonoBehaviour
 
     public IEnumerator StartStage(int stage)
     {
+        foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Monster"))
+        {
+            Destroy(obj);
+        }
+        foreach(GameObject obj in GameObject.FindGameObjectsWithTag("MonsterBullet"))
+        {
+            Destroy(obj);
+        }
+
         playerClass.ResetStatus();
+
 
         stageScore = 0;
         stageTime = 0;
@@ -198,5 +209,43 @@ public class InGameManager : MonoBehaviour
     public void EndGame()
     {
         SceneManager.LoadScene("EndGameScene");
+    }
+
+
+    public void CheatKey()
+    {
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Monster"))
+            {
+                if (obj.GetComponent<Boss>()) obj.GetComponent<Boss>().Die("");
+                if (obj.GetComponent<Monster>()) obj.GetComponent<Monster>().Die("");
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.F2))
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                playerClass.BulletUp();
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.F3))
+        {
+            playerClass.ResetStatus();
+        }
+        else if (Input.GetKeyDown(KeyCode.F4))
+        {
+            playerClass.hp = 100;
+        }
+        else if (Input.GetKeyDown(KeyCode.F5))
+        {
+            playerClass.fuel = 100;
+        }
+        else if (Input.GetKeyDown(KeyCode.F6))
+        {
+            if (curStage < 3) StartCoroutine(StartStage(curStage + 1));
+            else if (curStage == 3) StartCoroutine(StartStage(1));
+            InGameUIManager.instance.OnBossHpSlider(false);
+        }
     }
 }

@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9415e7c6135f6954ba5588e5373897b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 3000
+  hp: 5000
   speed: 2
   bulletObjs:
   - {fileID: 4019123564632310424, guid: 8ca3ed9751a373144b4247b719355595, type: 3}
@@ -179,9 +179,10 @@ MonoBehaviour:
   bulletSpread: 0
   bulletLevel: 0
   fireCurTime: 0
-  fireRate: 3
+  fireRate: 2.5
   bossType: 0
-  maxHp: 3000
-  score: 3000
+  maxHp: 5000
+  score: 5000
   isDie: 0
   DieEffectObj: {fileID: 0}
+  BombAttackObj: {fileID: 0}

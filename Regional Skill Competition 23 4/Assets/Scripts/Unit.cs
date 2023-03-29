@@ -33,10 +33,11 @@ public abstract class Unit : MonoBehaviour
         {
             Vector2 dir = new Vector2(InGameManager.instance.playerObj.transform.position.x + Random.Range(-angle , angle), InGameManager.instance.playerObj.transform.position.y + Random.Range(-angle, angle)) - startPos;
 
-            bulletObjs[0].transform.position = startPos;
-            bulletObjs[0].transform.up = dir.normalized;
+            GameObject bullet = Instantiate(bulletObjs[0]);
 
-            Instantiate(bulletObjs[0]).GetComponent<Bullet>().SetBulletStatus(bulletDamage, bulletSpeed, 0);
+            bullet.transform.position = startPos;
+            bullet.transform.up = dir.normalized;
+            bullet.GetComponent<Bullet>().SetBulletStatus(bulletDamage, bulletSpeed, 0);
         }
     }
     public IEnumerator AssaultFire(int bulletCount, int bulletDamage, float bulletSpeed, float fireRate, float angle)
@@ -45,10 +46,12 @@ public abstract class Unit : MonoBehaviour
         {
             Vector2 dir = new Vector2(InGameManager.instance.playerObj.transform.position.x + Random.Range(-angle, angle), InGameManager.instance.playerObj.transform.position.y + Random.Range(-angle, angle)) - (Vector2)transform.position;
 
-            bulletObjs[0].transform.position = transform.position;
-            bulletObjs[0].transform.up = dir.normalized;
+            GameObject bullet = Instantiate(bulletObjs[0]);
 
-            Instantiate(bulletObjs[0]).GetComponent<Bullet>().SetBulletStatus(bulletDamage, bulletSpeed, 0);
+            bullet.transform.position = transform.position;
+            bullet.transform.up = dir.normalized;
+            bullet.GetComponent<Bullet>().SetBulletStatus(bulletDamage, bulletSpeed, 0);
+
             yield return new WaitForSeconds(fireRate);
         }
 
@@ -58,11 +61,19 @@ public abstract class Unit : MonoBehaviour
     {
         Instantiate(InGameManager.instance.monsterObjs[monsterArr], startPos, Quaternion.identity);
     }
-    public void RegularFire(int bulletCount)
+    public IEnumerator RegularFire(int bulletCount, int fireCount, float startRotate, float rotateValue, float fireRate, float bulletSpread)
     {
-        for (int i = 0; i < bulletCount; i++)
+        for (int i = 0; i < fireCount; i++)
         {
-
+            for (int j = 0; j < bulletCount; j++)
+            {
+                GameObject bullet = Instantiate(bulletObjs[0]);
+                bullet.transform.position = transform.position;
+                bullet.transform.rotation = Quaternion.Euler(0, 0, startRotate + j * rotateValue);
+                bullet.GetComponent<Bullet>().SetBulletStatus(bulletDamage, bulletSpeed, bulletSpread);
+            }
+            yield return new WaitForSeconds(fireRate);
         }
+        yield break;
     }
 }
