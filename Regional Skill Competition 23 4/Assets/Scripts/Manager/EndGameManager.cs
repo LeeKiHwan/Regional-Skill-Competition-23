@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Text.RegularExpressions;
 
 public class EndGameManager : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class EndGameManager : MonoBehaviour
     public Text scoreText;
     public Text timeText;
 
-    public Button GoMenuBtn;
+    public Button goMenuBtn;
 
 
     private void Awake()
@@ -35,7 +36,7 @@ public class EndGameManager : MonoBehaviour
         }
         else
         {
-            GoMenuBtn.gameObject.SetActive(true);
+            goMenuBtn.gameObject.SetActive(true);
         }
     }
 
@@ -66,11 +67,16 @@ public class EndGameManager : MonoBehaviour
 
     public void RankInsert()
     {
+        if (!Regex.IsMatch(nameInputField.text, @"^[a-zA-Z]+$") || nameInputField.text.Length != 3) return;
+
         RankInfo rankInfo = new RankInfo();
         rankInfo.SetRankInfo(nameInputField.text, InGameManager.totalScore);
 
         RankingManager.instance.RankInsert(rankInfo);
         RankingUIOn();
+
+        goMenuBtn.gameObject.SetActive(true);
+        rankInsertUI.SetActive(false);
     }
 
     public void GoMenu()

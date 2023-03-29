@@ -367,7 +367,6 @@ MonoBehaviour:
   playerObj: {fileID: 0}
   playerClass: {fileID: 0}
   curStage: 0
-  difficulty: 0
   monsterObjs:
   - {fileID: 3221483047868092429, guid: 212c68e0418ba0e439fada983cdb7816, type: 3}
   - {fileID: 502816048459387518, guid: 5041df13805ccd84aa73ffd7b345d52c, type: 3}
@@ -387,7 +386,7 @@ MonoBehaviour:
   - {fileID: 3361504041048618903, guid: ba5d2295c671bc146abf8490d9caf2d1, type: 3}
   bossSpawnable: 0
   bossSpawnCurTime: 0
-  bossSpawnRate: 10
+  bossSpawnRate: 1
   stageScore: 0
   stageTime: 0
 --- !u!1 &297480295
@@ -1753,7 +1752,7 @@ MonoBehaviour:
   bulletObjs:
   - {fileID: 1908613352729578513, guid: 65e9bd8ff403da9409d4044e7a6039b5, type: 3}
   - {fileID: 3856936920062391662, guid: 69ed62eaeb91d014697d095a92d0750f, type: 3}
-  bulletDamage: 10
+  bulletDamage: 1000
   bulletSpeed: 15
   bulletSpread: 0.3
   bulletLevel: 1
