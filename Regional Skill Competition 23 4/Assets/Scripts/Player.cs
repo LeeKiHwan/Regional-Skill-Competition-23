@@ -83,14 +83,27 @@ public class Player : Unit
     {
         if (invcTime <= 0)
         {
-            if (hp - damage <= 0)
+            int finalDamage = 0;
+            switch (InGameManager.difficulty)
+            {
+                case 0:
+                    finalDamage = damage * 1;
+                    break;
+                case 1:
+                    finalDamage = damage * 2;
+                    break;
+                case 2:
+                    finalDamage = damage * 3;
+                    break;
+            }
+            if (hp - finalDamage <= 0)
             {
                 hp = 0;
                 Die("내구도 부족");
             }
             else
             {
-                hp -= damage;
+                hp -= finalDamage;
                 InvcTimeUp(1.5f);
             }
         }

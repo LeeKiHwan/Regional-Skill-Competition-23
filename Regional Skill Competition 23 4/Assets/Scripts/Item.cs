@@ -38,6 +38,7 @@ public class Item : MonoBehaviour
                     collision.GetComponent<Player>().BulletUp();
                     break;
             }
+            InGameManager.instance.AddScore(100);
             Destroy(gameObject);
         }
     }

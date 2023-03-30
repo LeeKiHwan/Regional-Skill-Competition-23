@@ -83,13 +83,14 @@ MonoBehaviour:
   bulletSpread: 0
   bulletLevel: 0
   fireCurTime: 0
-  fireRate: 2
+  fireRate: 4
   bossType: 2
   maxHp: 10000
   score: 10000
   isDie: 0
-  DieEffectObj: {fileID: 0}
-  BombAttackObj: {fileID: 0}
+  DieEffectObj: {fileID: 7151577071605834965, guid: e91978df097d3b04b843937d63caf899, type: 3}
+  BossDieSound: {fileID: 8300000, guid: 7b69beceabbd8f24e8bc62d77ac7ca1c, type: 3}
+  BombAttackObj: {fileID: 1590843938626823189, guid: 183746ce362d9504999f65f169206f70, type: 3}
 --- !u!68 &5752104252919786936
 EdgeCollider2D:
   m_ObjectHideFlags: 0

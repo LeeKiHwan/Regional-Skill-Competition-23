@@ -179,10 +179,11 @@ MonoBehaviour:
   bulletSpread: 0
   bulletLevel: 0
   fireCurTime: 0
-  fireRate: 2
+  fireRate: 4
   bossType: 1
   maxHp: 7500
   score: 7500
   isDie: 0
-  DieEffectObj: {fileID: 0}
+  DieEffectObj: {fileID: 7151577071605834965, guid: e91978df097d3b04b843937d63caf899, type: 3}
+  BossDieSound: {fileID: 8300000, guid: 7b69beceabbd8f24e8bc62d77ac7ca1c, type: 3}
   BombAttackObj: {fileID: 0}

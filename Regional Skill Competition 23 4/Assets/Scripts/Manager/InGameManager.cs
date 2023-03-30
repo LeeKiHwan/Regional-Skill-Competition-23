@@ -53,6 +53,11 @@ public class InGameManager : MonoBehaviour
         playerObj = GameObject.FindGameObjectWithTag("Player");
         playerClass = playerObj.GetComponent<Player>();
 
+        for (int i = 0; i < monsterSpawnRate.Length; i++)
+        {
+            monsterSpawnRate[i] = 10 - (i * 2 + difficulty * 2);
+        }
+
         totalScore = 0;
         totalTime = 0;
 

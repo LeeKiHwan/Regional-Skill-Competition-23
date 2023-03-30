@@ -44,16 +44,16 @@ public class Monster : Unit
             switch (monsterType)
             {
                 case MonsterType.Assault:
-                    StartCoroutine(AssaultFire(5, bulletDamage, bulletSpeed, 0.25f, bulletSpread));
+                    StartCoroutine(AssaultFire(5, bulletDamage, bulletSpeed, 0.25f, bulletSpread, transform.position));
                     break;
                 case MonsterType.Tank:
                     TankFire(6, bulletDamage, bulletSpeed, 3, transform.position);
                     break;
                 case MonsterType.Speed:
-                    StartCoroutine(AssaultFire(1, bulletDamage, bulletSpeed, 0, bulletSpread));
+                    StartCoroutine(AssaultFire(1, bulletDamage, bulletSpeed, 0, bulletSpread, transform.position));
                     break;
                 case MonsterType.Big:
-                    StartCoroutine(AssaultFire(10, bulletDamage, bulletSpeed, 0.2f, 3));
+                    StartCoroutine(AssaultFire(10, bulletDamage, bulletSpeed, 0.2f, 3, transform.position));
                     break;
             }
             fireCurTime = fireRate;

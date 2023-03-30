@@ -40,15 +40,15 @@ public abstract class Unit : MonoBehaviour
             bullet.GetComponent<Bullet>().SetBulletStatus(bulletDamage, bulletSpeed, 0);
         }
     }
-    public IEnumerator AssaultFire(int bulletCount, int bulletDamage, float bulletSpeed, float fireRate, float angle)
+    public IEnumerator AssaultFire(int bulletCount, int bulletDamage, float bulletSpeed, float fireRate, float angle, Vector2 startPos)
     {
         for (int i = 0; i < bulletCount; i++)
         {
-            Vector2 dir = new Vector2(InGameManager.instance.playerObj.transform.position.x + Random.Range(-angle, angle), InGameManager.instance.playerObj.transform.position.y + Random.Range(-angle, angle)) - (Vector2)transform.position;
+            Vector2 dir = new Vector2(InGameManager.instance.playerObj.transform.position.x + Random.Range(-angle, angle), InGameManager.instance.playerObj.transform.position.y + Random.Range(-angle, angle)) - startPos;
 
             GameObject bullet = Instantiate(bulletObjs[0]);
 
-            bullet.transform.position = transform.position;
+            bullet.transform.position = startPos;
             bullet.transform.up = dir.normalized;
             bullet.GetComponent<Bullet>().SetBulletStatus(bulletDamage, bulletSpeed, 0);
 

@@ -1752,7 +1752,7 @@ MonoBehaviour:
   bulletObjs:
   - {fileID: 1908613352729578513, guid: 65e9bd8ff403da9409d4044e7a6039b5, type: 3}
   - {fileID: 3856936920062391662, guid: 69ed62eaeb91d014697d095a92d0750f, type: 3}
-  bulletDamage: 1000
+  bulletDamage: 5
   bulletSpeed: 15
   bulletSpread: 0.3
   bulletLevel: 1
