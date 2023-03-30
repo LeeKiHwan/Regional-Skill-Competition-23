@@ -38,10 +38,9 @@ public class RangeAttack : MonoBehaviour
         }
         gameObject.GetComponent<Collider2D>().enabled = true;
         gameObject.GetComponent<SpriteRenderer>().color = Color.clear;
-        GameObject obj = Instantiate(effectObj, transform.position, Quaternion.identity);
+        GameObject obj = Instantiate(effectObj, transform);
         obj.transform.position = transform.position;
         obj.transform.localScale = transform.localScale;
-        obj.transform.parent = transform;
 
         yield return new WaitForSeconds(destroyTime);
 

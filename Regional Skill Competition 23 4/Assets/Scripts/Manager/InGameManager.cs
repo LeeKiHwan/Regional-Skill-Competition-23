@@ -109,7 +109,7 @@ public class InGameManager : MonoBehaviour
             if (monsterSpawnCurTime > 0) monsterSpawnCurTime -= Time.deltaTime;
             else
             {
-                int rand = Random.Range(0, 5);
+                int rand = Random.Range(0, 7);
                 switch (rand)
                 {
                     case 0:
@@ -126,6 +126,12 @@ public class InGameManager : MonoBehaviour
                         break;
                     case 4:
                         StartCoroutine(MeteorShower());
+                        break;
+                    case 5:
+                        AssualtSpeedSpawn();
+                        break;
+                    case 6:
+                        StartCoroutine(BigSpeedSpawn());
                         break;
                 }
                 monsterSpawnCurTime = monsterSpawnRate[curStage - 1];
@@ -171,6 +177,26 @@ public class InGameManager : MonoBehaviour
 
         yield break;
     }
+    public IEnumerator AssualtSpeedSpawn()
+    {
+        Instantiate(monsterObjs[0], new Vector3(1, 5, 0), Quaternion.identity);
+        Instantiate(monsterObjs[0], new Vector3(-1, 5, 0), Quaternion.identity);
+        yield return new WaitForSeconds(1);
+        Instantiate(monsterObjs[2], new Vector3(-3, 5, 0), Quaternion.identity);
+        Instantiate(monsterObjs[2], new Vector3(3, 5, 0), Quaternion.identity);
+
+        yield break;
+    }
+    public IEnumerator BigSpeedSpawn()
+    {
+        Instantiate(monsterObjs[3], new Vector3(-2, 6.5f, 0), Quaternion.identity);
+        yield return new WaitForSeconds(1);
+        Instantiate(monsterObjs[2], new Vector3(0, 5, 0), Quaternion.identity);
+        Instantiate(monsterObjs[2], new Vector3(2, 5, 0), Quaternion.identity);
+
+        yield break;
+    }
+
 
     public void BossSpawn()
     {
