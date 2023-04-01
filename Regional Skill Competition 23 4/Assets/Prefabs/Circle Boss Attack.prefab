@@ -101,6 +101,7 @@ MonoBehaviour:
   damage: 10
   curTime: 5
   destroyTime: 0.25
+  indicator: {fileID: 1590843938626823191}
   effectObj: {fileID: 6761211427209703788, guid: 0ad202bc0ec766249b1e7171786137ab, type: 3}
 --- !u!58 &1590843938626823193
 CircleCollider2D:

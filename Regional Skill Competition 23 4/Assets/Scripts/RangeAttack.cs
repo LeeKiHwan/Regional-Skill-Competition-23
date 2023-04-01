@@ -7,6 +7,7 @@ public class RangeAttack : MonoBehaviour
     public int damage;
     public float curTime;
     public float destroyTime;
+    public SpriteRenderer indicator;
     public GameObject effectObj;
 
     private void Awake()
@@ -33,11 +34,11 @@ public class RangeAttack : MonoBehaviour
         while (curTime > 0)
         {
             curTime -= Time.deltaTime;
-            gameObject.GetComponent<SpriteRenderer>().color = new Color(1, curTime / targetTime, curTime / targetTime);
+            indicator.color = new Color(1, curTime / targetTime, curTime / targetTime);
             yield return null;
         }
         gameObject.GetComponent<Collider2D>().enabled = true;
-        gameObject.GetComponent<SpriteRenderer>().color = Color.clear;
+        indicator.color = Color.clear;
         GameObject obj = Instantiate(effectObj, transform);
         obj.transform.position = transform.position;
         obj.transform.localScale = transform.localScale;
