@@ -2,29 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class InGameManager : MonoBehaviour
 {
+    [Header("Game Info")]
+    public static int dif;
+
+    [Header("Status UI")]
     public int hp;
     public Image hpImg;
+    public TextMeshProUGUI hpText;
 
+    [Header("Skill UI")]
     public float skillCurTime;
     public Image bgImg;
     public int skillTime;
-    public TMPro.TMP_Text skillTimeText;
+    public TMP_Text skillTimeText;
 
+    [Header("Score UI")]
     public int score;
-    public TMPro.TMP_Text scoreText;
+    public TMP_Text scoreText;
     public Transform addPos;
     public GameObject addScoreText;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            TakeDamage(10);
-        }
+        if (Input.GetKeyDown(KeyCode.K)) TakeDamage(10);
         hpImg.fillAmount = hp / 100f;
+        hpText.text = hp + "/100";
 
         SkillDown();
         scoreText.text = "Score : " + score;
@@ -59,8 +65,9 @@ public class InGameManager : MonoBehaviour
     public IEnumerator AddScoreText(int addScore)
     {
         GameObject textObj = Instantiate(addScoreText, addPos);
-        TMPro.TMP_Text text = textObj.GetComponent<TMPro.TMP_Text>();
+        TMP_Text text = textObj.GetComponent<TMP_Text>();
         text.text = "+" + addScore;
+        score += addScore;
 
         float destroyTime = 1;
         while(destroyTime > 0)
