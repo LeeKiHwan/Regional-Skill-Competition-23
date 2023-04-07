@@ -7,6 +7,10 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    [Header("MenuUI")]
+    public RectTransform menuUI;
+    public TextMeshProUGUI gameNameText;
+
     [Header("Dif UI")]
     public Button[] difBtns;
     public int dif;
@@ -17,6 +21,30 @@ public class MenuManager : MonoBehaviour
     public int helpUIIndex;
     public GameObject nextBtn;
     public GameObject prevBtn;
+
+    private void Awake()
+    {
+        //StartCoroutine(MoveMenuUI());
+        StartCoroutine(GameNameEffect());
+    }
+
+    //public IEnumerator MoveMenuUI()
+    //{
+    //    while (menuUI.anchoredPosition.y < 0)
+    //    {
+    //        menuUI.transform.Translate(0,1000 * Time.deltaTime, 0);
+    //        yield return null;
+    //    }
+
+    //    yield break;
+    //}
+
+    public IEnumerator GameNameEffect()
+    {
+
+
+        yield break;
+    }
 
     public void DifBtnClick(int index)
     {

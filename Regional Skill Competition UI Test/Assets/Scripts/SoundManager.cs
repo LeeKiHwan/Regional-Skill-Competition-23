@@ -1,0 +1,45 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class SoundManager : MonoBehaviour
+{
+    public static SoundManager instance;
+    public AudioSource bgSound;
+    public AudioClip[] bgList;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
+    {
+        for (int i = 0; i<bgList.Length; i++)
+        {
+            if (arg0.name == bgList[i].name)
+            {
+                BgSoundPlay(bgList[i]);
+            }
+        }
+    }
+
+    public void BgSoundPlay(AudioClip clip)
+    {
+        bgSound.clip = clip;
+        bgSound.loop = true;
+        bgSound.volume = 0.1f;
+        bgSound.Play();
+    }
+}
